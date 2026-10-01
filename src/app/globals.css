@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-manrope), var(--font-dm-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Cool-neutral knowledge-tool palette: deep navy primary, amber highlight. */
+:root {
+  --radius: 0.75rem;
+  --background: hsl(210 35% 97%);
+  --foreground: hsl(216 25% 15%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(216 25% 15%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(216 25% 15%);
+  --primary: hsl(216 55% 22%);
+  --primary-foreground: hsl(210 40% 98%);
+  --secondary: hsl(213 25% 92%);
+  --secondary-foreground: hsl(216 35% 25%);
+  --muted: hsl(213 25% 94%);
+  --muted-foreground: hsl(215 15% 45%);
+  --accent: hsl(213 25% 93%);
+  --accent-foreground: hsl(216 35% 25%);
+  --highlight: hsl(31 67% 52%);
+  --highlight-foreground: hsl(32 60% 16%);
+  --destructive: hsl(0 58% 44%);
+  --border: hsl(214 22% 88%);
+  --input: hsl(214 22% 82%);
+  --ring: hsl(215 55% 42%);
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(216 25% 15%);
+  --sidebar-primary: hsl(216 55% 22%);
+  --sidebar-primary-foreground: hsl(210 40% 98%);
+  --sidebar-accent: hsl(213 25% 92%);
+  --sidebar-accent-foreground: hsl(216 55% 22%);
+  --sidebar-border: hsl(214 22% 88%);
+  --sidebar-ring: hsl(215 55% 42%);
+}
+
+.dark {
+  --background: hsl(216 25% 12%);
+  --foreground: hsl(210 25% 92%);
+  --card: hsl(216 24% 16%);
+  --card-foreground: hsl(210 25% 92%);
+  --popover: hsl(216 24% 16%);
+  --popover-foreground: hsl(210 25% 92%);
+  --primary: hsl(210 70% 72%);
+  --primary-foreground: hsl(216 35% 13%);
+  --secondary: hsl(215 18% 24%);
+  --secondary-foreground: hsl(210 25% 92%);
+  --muted: hsl(215 19% 21%);
+  --muted-foreground: hsl(215 12% 68%);
+  --accent: hsl(215 18% 24%);
+  --accent-foreground: hsl(210 25% 92%);
+  --highlight: hsl(31 70% 60%);
+  --highlight-foreground: hsl(32 60% 12%);
+  --destructive: hsl(0 60% 58%);
+  --border: hsl(215 18% 27%);
+  --input: hsl(215 18% 32%);
+  --ring: hsl(210 70% 70%);
+  --sidebar: hsl(216 24% 16%);
+  --sidebar-foreground: hsl(210 25% 92%);
+  --sidebar-primary: hsl(210 70% 72%);
+  --sidebar-primary-foreground: hsl(216 35% 13%);
+  --sidebar-accent: hsl(215 18% 24%);
+  --sidebar-accent-foreground: hsl(210 70% 80%);
+  --sidebar-border: hsl(215 18% 27%);
+  --sidebar-ring: hsl(210 70% 70%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--highlight) 28%, transparent);
+  }
+}
+
+@utility card-interactive {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 14px 34px rgb(24 43 65 / 0.08),
+      0 0 0 1px color-mix(in oklab, var(--primary) 28%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
