@@ -93,7 +93,7 @@ The app runs on any Node.js host that supports Next.js, including Vercel.
 Production requires the public site URL:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=<production-url>
+https://use-ai-better.vercel.app/
 ```
 
 Set it in your hosting provider's environment variables before building. It is used for canonical URLs, Open
